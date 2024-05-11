@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" version="6.0">
+  <display-name>login</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>authController</display-name>
+    <servlet-name>authController</servlet-name>
+    <servlet-class>tn.iit.controller.authController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>authController</servlet-name>
+    <url-pattern>/authController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>bienvenueView</display-name>
+    <servlet-name>bienvenueView</servlet-name>
+    <servlet-class>tn.iit.bienvenueView.bienvenueView</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>bienvenueView</servlet-name>
+    <url-pattern>/bienvenueView</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InscriptionController</display-name>
+    <servlet-name>InscriptionController</servlet-name>
+    <servlet-class>tn.iit.controller.InscriptionController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InscriptionController</servlet-name>
+    <url-pattern>/InscriptionController</url-pattern>
+  </servlet-mapping>
+ 
+</web-app>

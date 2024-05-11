@@ -1,9 +1,4 @@
-${pageContext.request.contextPath}/template/${pageContext.request.contextPath}/template/${pageContext.request.contextPath}/template/${pageContext.request.contextPath}/template//*
-Template Name: Admin Template
-Author: Wrappixel
-
-File: js
-*/
+ 
 // ============================================================== 
 // Auto select left navbar
 // ============================================================== 

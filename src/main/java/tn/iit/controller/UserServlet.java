@@ -30,55 +30,23 @@ public class UserServlet extends HttpServlet {
         utilisateurDAO = new UtilisateurDAO();
     }
 
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-   throws ServletException, IOException {
-	    
-	    String username = request.getParameter("username");
-	    String password = request.getParameter("password");
-
-	    UtilisateurDAO userDAO = new UtilisateurDAO();
-
-	    utilisateur authenticatedUser = userDAO.login(username, password);
-	    
-	    if (authenticatedUser != null) {
-	        HttpSession session = request.getSession(true);
-	        session.setAttribute("userCourant", authenticatedUser);
-	        System.out.println("userCourant: " + authenticatedUser.getUsername());
-	        System.out.println("Role ID: " + authenticatedUser.getRole_id()); 
-	        
-	        String role_id = authenticatedUser.getRole_id();
-	        String destinationPage;
-	        if ("1".equals(role_id)) {  
-	            destinationPage = "/UserServlet";
-	        } else if ("2".equals(role_id)) { 
-	            destinationPage = "/teacher/index.jsp";
-	        } else if ("3".equals(role_id)) { 
-	            destinationPage = "/agent/index.jsp";
-	        } else {
-	            destinationPage = "/error.jsp"; // Handle unknown role ID
-	        }
-	        
-	        // Add a delay before redirecting
-	        String redirectScript = "<script>setTimeout(function() { window.location.href = '" + request.getContextPath() + destinationPage + "'; }, 1000);</script>";
-	        response.getWriter().write(redirectScript);
-	    } else {
-	        request.setAttribute("error", "Invalid username or password. Please try again.");
-	        RequestDispatcher rd = getServletContext().getRequestDispatcher("/auth/login.jsp");
-	        rd.forward(request, response);
-	    }
+    throws ServletException, IOException {
+        doGet(request, response);
     }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         String action = request.getServletPath();
-    	System.out.println("action "+action);
+
         try {
             switch (action) {
                 case "/new":
-                	System.out.println("show form user ");
+           
                     showNewForm(request, response);
                     break;
                 case "/insert":
+                
                     insertUser(request, response);
                     break;
                 case "/delete":
@@ -117,21 +85,25 @@ public class UserServlet extends HttpServlet {
     throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         utilisateur existingUser = utilisateurDAO.selectUser(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/index.jsp");
-        request.setAttribute("user", existingUser);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/users/editUser.jsp");
+         request.setAttribute("user", existingUser);
         dispatcher.forward(request, response);
     }
 
     private void insertUser(HttpServletRequest request, HttpServletResponse response)
+
     throws SQLException, IOException {
         String username = request.getParameter("username");
         String role_id = request.getParameter("role_id");
         String password = request.getParameter("password");
-        String state = request.getParameter("state");
-        
-        utilisateur newUser = new utilisateur(username, role_id, password, state);
+     
+
+        utilisateur newUser = new utilisateur(username, role_id, password);
+     
         utilisateurDAO.insertUser(newUser);
-        response.sendRedirect("list");
+       
+
+        response.sendRedirect("/login/UserServlet");
     }
 
     private void updateUser(HttpServletRequest request, HttpServletResponse response)
@@ -140,9 +112,9 @@ public class UserServlet extends HttpServlet {
         String username = request.getParameter("username");
         String role_id = request.getParameter("role_id");
         String password = request.getParameter("password");
-        String state = request.getParameter("state");
+     
 
-        utilisateur user = new utilisateur(id, username, role_id, password, state);
+        utilisateur user = new utilisateur(id, username, role_id, password);
         utilisateurDAO.updateUser(user);
         response.sendRedirect("list");
     }

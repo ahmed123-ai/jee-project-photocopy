@@ -5,23 +5,22 @@ public class utilisateur {
 	String username;
 	String role_id;
 	String password;
-	String state;
 
-	public utilisateur(int id, String username, String role_id, String password, String state) {
+
+	public utilisateur(int id, String username, String role_id, String password) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.role_id = role_id;
 		this.password = password;
-		this.state = state;
+
 	}
 
-	public utilisateur(String username, String role_id, String password, String state) {
+	public utilisateur(String username, String role_id, String password) {
 		super();
 		this.username = username;
 		this.role_id = role_id; 
 		this.password = password;
-		this.state = state;
 	}
 
 	public String getUsername() {
@@ -48,13 +47,7 @@ public class utilisateur {
 		this.password = password;
 	}
 
-	public String getState() {
-		return state;
-	}
 
-	public void setState(String state) {
-		this.state = state;
-	}
 
 	public int getId() {
 		return id;

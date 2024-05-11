@@ -23,13 +23,13 @@ public class UtilisateurDAO {
     private String jdbcUsername = "root";
     private String jdbcPassword = "";
 
-    private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (username, role_id, password, state) VALUES " +
-        " (?, ?, ?, ?);";
+    private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (username, role_id, password) VALUES " +
+        " (?, ?, ?);";
 
-    private static final String SELECT_USER_BY_ID = "select id, username, role_id, password, state from users where id =?";
+    private static final String SELECT_USER_BY_ID = "select id, username, role_id, password from users where id =?";
     private static final String SELECT_ALL_USERS = "select * from users";
     private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
-    private static final String UPDATE_USERS_SQL = "update users set username = ?, role_id = ?, password = ?, state = ? where id = ?;";
+    private static final String UPDATE_USERS_SQL = "update users set username = ?, role_id = ?, password = ? where id = ?";
 
     public UtilisateurDAO() {}
 
@@ -38,6 +38,7 @@ public class UtilisateurDAO {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+            
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -52,7 +53,6 @@ public class UtilisateurDAO {
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getRole_id());
             preparedStatement.setString(3, user.getPassword());
-            preparedStatement.setString(4, user.getState());
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -72,8 +72,8 @@ public class UtilisateurDAO {
                 String username = rs.getString("username");
                 String role_id = rs.getString("role_id");
                 String password = rs.getString("password");
-                String state = rs.getString("state");
-                user = new utilisateur(id, username, role_id, password, state);
+
+                user = new utilisateur(id, username, role_id, password);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -93,8 +93,8 @@ public class UtilisateurDAO {
                 String username = rs.getString("username");
                 String role_id = rs.getString("role_id");
                 String password = rs.getString("password");
-                String state = rs.getString("state");
-                users.add(new utilisateur(id, username, role_id, password, state));
+
+                users.add(new utilisateur(id, username, role_id, password));
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -117,8 +117,7 @@ public class UtilisateurDAO {
             statement.setString(1, user.getUsername());
             statement.setString(2, user.getRole_id());
             statement.setString(3, user.getPassword());
-            statement.setString(4, user.getState());
-            statement.setInt(5, user.getId());
+            statement.setInt(4, user.getId());
 
             rowUpdated = statement.executeUpdate() > 0;
         }
@@ -143,8 +142,8 @@ public class UtilisateurDAO {
                         rs.getInt("id"),
                         rs.getString("username"),
                         rs.getString("role_id"),
-                        rs.getString("password"),
-                        rs.getString("state")
+                        rs.getString("password")
+           
                     );
                     System.out.println(rs.getString("username"));
                     return user;  

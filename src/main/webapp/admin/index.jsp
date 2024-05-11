@@ -4,8 +4,8 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html dir="ltr" lang="en">
 
 <head>
@@ -15,22 +15,13 @@
 <link rel="canonical"
 	href="https://www.wrappixel.com/templates/ample-admin-lite/" />
 
-
-
-
-<!-- Favicon icon -->
-<link rel="icon" type="image/png" sizes="16x16"
-	href="../template/plugins/images/favicon.png">
 <!-- Custom CSS -->
 <link
-	href="${pageContext.request.contextPath}/template/plugins/bower_components/chartist/dist/chartist.min.css"
-	type="text/css" rel="stylesheet">
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/template/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
-<!-- Custom CSS -->
-<link
-	href="${pageContext.request.contextPath}/template/css/style.min.css"
-	type="text/css" rel="stylesheet">
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+	crossorigin="anonymous">
+
 <style>
 .container-fluid {
 	margin-bottom: 4rem !important;
@@ -63,93 +54,24 @@ td {
 	<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5"
 		data-sidebartype="full" data-sidebar-position="absolute"
 		data-header-position="absolute" data-boxed-layout="full">
-		<!-- ============================================================== -->
-		<!-- Topbar header - style you can find in pages.scss -->
-		<!-- ============================================================== -->
 
-		<!-- ============================================================== -->
-		<!-- End Topbar header -->
-		<!-- ============================================================== -->
-		<!-- ============================================================== -->
-		<!-- Left Sidebar - style you can find in sidebar.scss  -->
-		<!-- ============================================================== -->
-		<aside class="left-sidebar" data-sidebarbg="skin6">
-			<!-- Sidebar scroll-->
-			<div class="scroll-sidebar">
-				<!-- Sidebar navigation-->
-				<nav class="sidebar-nav">
-					<ul id="sidebarnav">
-						<!-- User Profile-->
 
-						<li class="sidebar-item"><a
-							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="profile.html" aria-expanded="false"> <i
-								class="fa fa-user" aria-hidden="true"></i> <span
-								class="hide-menu">Utilisateur</span>
-						</a></li>
-						<li class="sidebar-item"><a
-							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="basic-table.html" aria-expanded="false"> <i
-								class="fa fa-table" aria-hidden="true"></i> <span
-								class="hide-menu">Basic Table</span>
-						</a></li>
-						<li class="sidebar-item"><a
-							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="fontawesome.html" aria-expanded="false"> <i
-								class="fa fa-font" aria-hidden="true"></i> <span
-								class="hide-menu">Icon</span>
-						</a></li>
-						<li class="sidebar-item"><a
-							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="map-google.html" aria-expanded="false"> <i
-								class="fa fa-globe" aria-hidden="true"></i> <span
-								class="hide-menu">Google Map</span>
-						</a></li>
-						<li class="sidebar-item"><a
-							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="blank.html" aria-expanded="false"> <i
-								class="fa fa-columns" aria-hidden="true"></i> <span
-								class="hide-menu">Blank Page</span>
-						</a></li>
-						<li class="sidebar-item"><a
-							class="sidebar-link waves-effect waves-dark sidebar-link"
-							href="404.html" aria-expanded="false"> <i
-								class="fa fa-info-circle" aria-hidden="true"></i> <span
-								class="hide-menu">Error 404</span>
-						</a></li>
-						<li class="text-center p-20 upgrade-btn"><a
-							href="https://www.wrappixel.com/templates/ampleadmin/"
-							class="btn d-grid btn-danger text-white" target="_blank">
-								Upgrade to Pro</a></li>
-					</ul>
 
-				</nav>
-				<!-- End Sidebar navigation -->
-			</div>
-			<!-- End Sidebar scroll-->
-		</aside>
-		<!-- ============================================================== -->
-		<!-- End Left Sidebar - style you can find in sidebar.scss  -->
-		<!-- ============================================================== -->
-		<!-- ============================================================== -->
-		<!-- Page wrapper  -->
-		<!-- ============================================================== -->
 		<div class="page-wrapper">
 			<!-- ============================================================== -->
 			<!-- Bread crumb and right sidebar toggle -->
 			<!-- ============================================================== -->
 			<div class="page-breadcrumb bg-white">
 				<div class="row align-items-center">
-					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+					<h2 class="form-title">
 						<%
 						utilisateur u = (utilisateur) session.getAttribute("userCourant");
 						%>
 
-						<h4 class="page-title">
+						<p class="hello">
 							Bienvenu :
-							<%=u.getUsername()%></h4>
-
-					</div>
+							<%=u.getUsername()%></p>
+					</h2>
 
 				</div>
 				<!-- /.col-lg-12 -->
@@ -161,8 +83,17 @@ td {
 			<!-- Container fluid  -->
 			<!-- ============================================================== -->
 			<div class="container-fluid">
+				<div class="row">
+					<div class="col">
+						<a type="button" href="<%=request.getContextPath()%>"
+							class="btn btn-primary">Utilisateurs</a>
+						<button type="button" class="btn btn-primary">Button 2</button>
+						<button type="button" class="btn btn-primary">Button 3</button>
+						<button type="button" class="btn btn-primary">Button 4</button>
+						<button type="button" class="btn btn-primary">Button 5</button>
 
-
+					</div>
+				</div>
 				<!-- ============================================================== -->
 				<!-- RECENT SALES -->
 				<!-- ============================================================== -->
@@ -172,7 +103,8 @@ td {
 							<div class="d-md-flex mb-3">
 								<h3 class="box-title mb-0">liste des utilisateurs</h3>
 								<div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
-							<a href="<%=request.getContextPath()%>/new" class="btn btn-primary">Ajouter un nouveau utilisateur</a>
+									<a href="<%=request.getContextPath()%>/new"
+										class="btn btn-primary">Ajouter un nouveau utilisateur</a>
 
 
 								</div>
@@ -185,37 +117,37 @@ td {
 											<th class="border-top-0">Pseudo</th>
 											<th class="border-top-0">Role</th>
 											<th class="border-top-0">Mot de passe</th>
-											<th class="border-top-0">Status</th>
 											<th class="border-top-0">Action</th>
 										</tr>
 									</thead>
-									 <tbody>
-                                <!-- Iterate over the list of users -->
-                                <% 
-                                    List<utilisateur> listUser = (List<utilisateur>) request.getAttribute("listUser");
-                                    if (listUser != null) {
-                                        for (utilisateur user : listUser) {
-                                %>
-                                <tr>
-                                    <td><%= user.getUsername() %></td>
-                                    <td><%= user.getRole_id() %></td>
-                                    <td><%= user.getPassword() %></td>
-                                    <td><%= user.getState() %></td>
-                                    <td>
-                                        <!-- Example of action buttons for each user -->
-                                        <button type="button" class="btn btn-success">
-                                            <a href="#" class="text-white">Modifier</a>
-                                        </button>
-                                        <button type="button" class="btn btn-danger">
-                                            <a href="#" class="text-white">Supprimer</a>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <% 
-                                        }
-                                    }
-                                %>
-                            </tbody>
+									<tbody>
+										<!-- Iterate over the list of users -->
+										<%
+										List<utilisateur> listUser = (List<utilisateur>) request.getAttribute("listUser");
+										if (listUser != null) {
+											for (utilisateur user : listUser) {
+										%>
+										<tr>
+											<td><%=user.getUsername()%></td>
+											<td><%=user.getRole_id()%></td>
+											<td><%=user.getPassword()%></td>
+											<td>
+												<button type="button" class="btn btn-success">
+													<a
+														href="<%=request.getContextPath()%>/edit?id=<%=user.getId()%>"
+														class="text-white">Modifier</a>
+												</button>
+
+												<button type="button" class="btn btn-danger">
+													<a 	href="<%=request.getContextPath()%>/delete?id=<%=user.getId()%>" class="text-white">Supprimer</a>
+												</button>
+											</td>
+										</tr>
+										<%
+										}
+										}
+										%>
+									</tbody>
 								</table>
 							</div>
 						</div>
@@ -237,7 +169,7 @@ td {
 			<!-- footer -->
 			<!-- ============================================================== -->
 			<footer class="footer text-center">
-				2021 © Ample Admin brought to you by <a
+				2021 Â© Ample Admin brought to you by <a
 					href="https://www.wrappixel.com/">wrappixel.com</a>
 			</footer>
 			<!-- ============================================================== -->
@@ -254,30 +186,11 @@ td {
 	<!-- ============================================================== -->
 	<!-- All Jquery -->
 	<!-- ============================================================== -->
+
 	<script
-		src="${pageContext.request.contextPath}/template/plugins/bower_components/jquery/dist/jquery.min.js"></script>
-	<!-- Bootstrap tether Core JavaScript -->
-	<script
-		src="${pageContext.request.contextPath}/template/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/template/js/app-style-switcher.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/template/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
-	<!--Wave Effects -->
-	<script src="${pageContext.request.contextPath}/template/js/waves.js"></script>
-	<!--Menu sidebar -->
-	<script
-		src="${pageContext.request.contextPath}/template/js/sidebarmenu.js"></script>
-	<!--Custom JavaScript -->
-	<script src="${pageContext.request.contextPath}/template/js/custom.js"></script>
-	<!--This page JavaScript -->
-	<!--chartis chart-->
-	<script
-		src="${pageContext.request.contextPath}/template/plugins/bower_components/chartist/dist/chartist.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/template/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/template/js/pages/dashboards/dashboard1.js"></script>
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+		crossorigin="anonymous"></script>
 </body>
 
 </html>

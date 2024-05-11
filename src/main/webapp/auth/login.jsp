@@ -60,7 +60,7 @@ body {
 				%>
 				<div class="signin-form">
 					<h2 class="form-title">Sign up</h2>
-					<form action="../authController" method="post" id="login-form">
+					<form action="../UserServlet" method="post" id="login-form">
 						<div class="form-group">
 							<label for="username"><i class="zmdi zmdi-lock-outline"></i></label>
 							<input type="text" name="username" id="username"

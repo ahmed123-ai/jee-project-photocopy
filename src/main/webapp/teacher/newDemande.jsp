@@ -7,7 +7,12 @@
 
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-
+<style>
+h2.form-title {
+    text-align: center;
+    margin-bottom: 45px;
+    margin-top: 45px;
+}</style>
 <head>
     <meta charset="utf-8">
     <title>Ajouter une nouvelle Demande de Tirage</title>
@@ -16,7 +21,8 @@
 
 <body>
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-        <div class="page-wrapper">
+      
+ <div class="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                 	<%
@@ -27,7 +33,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <form action="insertDemande" method="post" class="form-horizontal form-material">
-                                    <div class="form-group mb-4">
+                                    <div class="form-group mb-4"  style="    background: white;
+    color: white;"   >
                                         <label class="col-md-12 p-0">User ID</label>
                                         <div class="col-md-12 border-bottom p-0">
 				<input hidden="true" value="<%= u.getId() %>" name="user_id" id="user_id" type="text"  class="form-control p-0 border-0">
@@ -53,7 +60,7 @@
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Date d'arrivée</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <input name="dateArriver" id="dateArriver" type="date" placeholder="Date d'arrivée" class="form-control p-0 border-0">
+                                            <input name="dateArriver" id="dateArriver" type="datetime-local" placeholder="Date d'arrivée" class="form-control p-0 border-0">
                                         </div>
                                     </div>
                                     <div class="form-group mb-4">

@@ -1,7 +1,7 @@
 <%@page import="model.matiere"%>
 <%@page import="model.groupe"%>
 <%@page import="java.util.List"%>
-
+<%@page import="model.utilisateur"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
@@ -34,6 +34,11 @@
         td {
             text-align: center !important;
         }
+              p.hello {
+    text-align: center;
+    margin-bottom: 35px;
+    margin-top: 35px;
+}
     </style>
 </head>
 
@@ -60,11 +65,21 @@
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <div class="page-breadcrumb bg-white">
-                <div class="row align-items-center">
-                    <h2 class="form-title">
-                        <!-- Insert any title here -->
-                    </h2>
-                </div>
+           	<div class="row align-items-center">
+					<%
+					utilisateur u = (utilisateur) session.getAttribute("userCourant");
+					if (u != null) {
+					%>
+					<h2 class="form-title">
+						<p class="hello">
+							Bienvenue :
+							<%=u.getUsername()%></p>
+					</h2>
+					<%
+					}
+					%>
+
+				</div>
             </div>
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
@@ -73,11 +88,20 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col">
-                        <!-- Insert any buttons or actions here -->
-                    </div>
-                </div>
+             		<div class="row">
+					<div class="col">
+						<a type="button" href="<%=request.getContextPath()%>"
+							class="btn btn-primary">Utilisateurs</a> <a
+							href="<%=request.getContextPath()%>/listingGroupe"
+							class="btn btn-primary">Groupes</a> <a
+							href="<%=request.getContextPath()%>/listingMatiere"
+							class="btn btn-primary">Matiers</a> 
+							<a
+							href="<%=request.getContextPath()%>/logout" class="btn btn-info" >Logout</a>
+
+ 
+					</div>
+				</div>
                 <!-- ============================================================== -->
                 <!-- RECENT SALES -->
                 <!-- ============================================================== -->
@@ -135,9 +159,7 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer text-center">
-                2021 © Ample Admin brought to you by <a href="https://www.wrappixel.com/">wrappixel.com</a>
-            </footer>
+      
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->

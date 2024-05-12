@@ -34,6 +34,11 @@ th.border-top-0 {
 td {
 	text-align: center !important;
 }
+p.hello {
+    text-align: center;
+    margin-bottom: 35px;
+    margin-top: 35px;
+}
 </style>
 </head>
 
@@ -93,11 +98,11 @@ td {
 							href="<%=request.getContextPath()%>/listingGroupe"
 							class="btn btn-primary">Groupes</a> <a
 							href="<%=request.getContextPath()%>/listingMatiere"
-							class="btn btn-primary">Matiers</a> <a
-							href="<%=request.getContextPath()%>/logout" class="nav-link">Logout</a>
+							class="btn btn-primary">Matiers</a> 
+							<a
+							href="<%=request.getContextPath()%>/logout" class="btn btn-info" >Logout</a>
 
-						<button type="button" class="btn btn-primary">Button 5</button>
-
+ 
 					</div>
 				</div>
 				<!-- ============================================================== -->
@@ -190,10 +195,7 @@ td {
 			<!-- ============================================================== -->
 			<!-- footer -->
 			<!-- ============================================================== -->
-			<footer class="footer text-center">
-				2021 © Ample Admin brought to you by <a
-					href="https://www.wrappixel.com/">wrappixel.com</a>
-			</footer>
+	 
 			<!-- ============================================================== -->
 			<!-- End footer -->
 			<!-- ============================================================== -->

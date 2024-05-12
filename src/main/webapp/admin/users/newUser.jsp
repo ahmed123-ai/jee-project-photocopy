@@ -45,32 +45,14 @@
 		data-sidebartype="full" data-sidebar-position="absolute"
 		data-header-position="absolute" data-boxed-layout="full">
 	 
- 				<div class="row">
-					<div class="col">
-						<a type="button"  href="<%=request.getContextPath()%>"class="btn btn-primary">Utilisateurs</a>
-						<button type="button" class="btn btn-primary">Button 2</button>
-						<button type="button" class="btn btn-primary">Button 3</button>
-						<button type="button" class="btn btn-primary">Button 4</button>
-						<button type="button" class="btn btn-primary">Button 5</button>
-
-					</div>
-	</div>
+ 	 
 		<div class="page-wrapper">
 			<!-- ============================================================== -->
 			<!-- Bread crumb and right sidebar toggle -->
 			<!-- ============================================================== -->
 			<div class="page-breadcrumb bg-white">
 				<div class="row align-items-center">
-					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-						<%
-						utilisateur u = (utilisateur) session.getAttribute("userCourant");
-						%>
-
-						<h4 class="page-title">
-							Bienvenu :
-							<%=u.getUsername()%></h4>
-
-					</div>
+				 
 
 				</div>
 				<!-- /.col-lg-12 -->
@@ -152,10 +134,7 @@
 			<!-- ============================================================== -->
 			<!-- footer -->
 			<!-- ============================================================== -->
-			<footer class="footer text-center">
-				2021 © Ample Admin brought to you by <a
-					href="https://www.wrappixel.com/">wrappixel.com</a>
-			</footer>
+		 
 			<!-- ============================================================== -->
 			<!-- End footer -->
 			<!-- ============================================================== -->

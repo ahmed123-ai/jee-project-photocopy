@@ -25,6 +25,12 @@
         td {
             text-align: center !important;
         }
+        h2.form-title {
+    text-align: center;
+    margin-bottom: 45px;
+    margin-top: 45px;
+}
+
     </style>
 </head>
 <body>
@@ -36,7 +42,27 @@
     }
 %>
 <div class="container-fluid">
+
+	<div class="row align-items-center">
+					<%
+					utilisateur u = (utilisateur) session.getAttribute("userCourant");
+					if (u != null) {
+					%>
+					<h2 class="form-title">
+						<p class="hello">
+							Bienvenue :
+							<%=u.getUsername()%></p>
+							<a
+							href="<%=request.getContextPath()%>/logout" class="btn btn-info" >Logout</a> 
+					</h2>
+					<%
+					}
+					%>
+      				
+				</div>
+				
     <div class="row">
+    
         <% if (roleId.equals("2") ) { %>
         <div class="col">
             <a type="button" href="<%=request.getContextPath()%>/newDemande" class="btn btn-primary">New DemandeTirage</a>

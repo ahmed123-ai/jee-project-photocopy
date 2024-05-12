@@ -63,15 +63,18 @@ td {
 			<!-- ============================================================== -->
 			<div class="page-breadcrumb bg-white">
 				<div class="row align-items-center">
+					<%
+					utilisateur u = (utilisateur) session.getAttribute("userCourant");
+					if (u != null) {
+					%>
 					<h2 class="form-title">
-						<%
-						utilisateur u = (utilisateur) session.getAttribute("userCourant");
-						%>
-
 						<p class="hello">
-							Bienvenu :
+							Bienvenue :
 							<%=u.getUsername()%></p>
 					</h2>
+					<%
+					}
+					%>
 
 				</div>
 				<!-- /.col-lg-12 -->
@@ -86,10 +89,13 @@ td {
 				<div class="row">
 					<div class="col">
 						<a type="button" href="<%=request.getContextPath()%>"
-							class="btn btn-primary">Utilisateurs</a>
-						<a  href="<%=request.getContextPath()%>/listingGroupe"  class="btn btn-primary">Groupes</a>
-						<a  href="<%=request.getContextPath()%>/listingMatiere"     class="btn btn-primary">Matiers</a>
-						<button type="button" class="btn btn-primary">Button 4</button>
+							class="btn btn-primary">Utilisateurs</a> <a
+							href="<%=request.getContextPath()%>/listingGroupe"
+							class="btn btn-primary">Groupes</a> <a
+							href="<%=request.getContextPath()%>/listingMatiere"
+							class="btn btn-primary">Matiers</a> <a
+							href="<%=request.getContextPath()%>/logout" class="nav-link">Logout</a>
+
 						<button type="button" class="btn btn-primary">Button 5</button>
 
 					</div>
@@ -130,19 +136,19 @@ td {
 										<tr>
 											<td><%=user.getUsername()%></td>
 											<td>
-												<% 
-										    String role = user.getRole_id() ;
-										    if (role.equals("1")) {
-										        out.print("Admin");
-										    } else if (role.equals("2")) {
-										        out.print("Enseignant");
-										    } else if (role.equals("3")) {
-										        out.print("Agent");
-										    } else {
-										        out.print("Unknown");
-										    }
-										    %>
-				  						</td>
+												<%
+												String role = user.getRole_id();
+												if (role.equals("1")) {
+													out.print("Admin");
+												} else if (role.equals("2")) {
+													out.print("Enseignant");
+												} else if (role.equals("3")) {
+													out.print("Agent");
+												} else {
+													out.print("Unknown");
+												}
+												%>
+											</td>
 											</td>
 											<td><%=user.getPassword()%></td>
 											<td>

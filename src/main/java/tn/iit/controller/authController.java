@@ -50,9 +50,9 @@ public class authController extends HttpServlet {
 			if ("1".equals(role_id)) {
 				destinationPage = "/UserServlet";
 			} else if ("2".equals(role_id)) {
-				destinationPage = "/teacher/index.jsp";
+				destinationPage = "/listDemande";
 			} else if ("3".equals(role_id)) {
-				destinationPage = "/agent/index.jsp";
+				destinationPage = "/listDemande";
 			} else {
 				destinationPage = "/error.jsp"; // Handle unknown role ID
 			}

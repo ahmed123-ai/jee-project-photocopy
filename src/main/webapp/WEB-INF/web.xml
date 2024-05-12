@@ -44,7 +44,6 @@
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/UserServlet</url-pattern>
   </servlet-mapping>
-
   <servlet>
     <description></description>
     <display-name>GroupeServlet</display-name>
@@ -54,5 +53,15 @@
   <servlet-mapping>
     <servlet-name>GroupeServlet</servlet-name>
     <url-pattern>/GroupeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>demandeTirage</display-name>
+    <servlet-name>demandeTirage</servlet-name>
+    <servlet-class>tn.iit.controller.demandeTirage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>demandeTirage</servlet-name>
+    <url-pattern>/demandeTirage</url-pattern>
   </servlet-mapping>
 </web-app>

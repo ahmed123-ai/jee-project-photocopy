@@ -32,7 +32,6 @@ public class authController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getServletPath();
-		System.out.println("action " + action);
 
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
@@ -44,8 +43,7 @@ public class authController extends HttpServlet {
 		if (authenticatedUser != null) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("userCourant", authenticatedUser);
-			System.out.println("userCourant: " + authenticatedUser.getUsername());
-			System.out.println("Role ID: " + authenticatedUser.getRole_id());
+ 
 
 			String role_id = authenticatedUser.getRole_id();
 			String destinationPage;

@@ -1,7 +1,8 @@
+<%@page import="model.groupe"%>
+<%@page import="java.util.List"%>
 
 <%@page import="model.utilisateur"%>
 <%@page import="java.util.List"%>
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -21,20 +22,6 @@
 	rel="stylesheet"
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous">
-
-<style>
-.container-fluid {
-	margin-bottom: 4rem !important;
-}
-
-th.border-top-0 {
-	text-align: center !important;
-}
-
-td {
-	text-align: center !important;
-}
-</style>
 </head>
 
 <body>
@@ -55,25 +42,12 @@ td {
 		data-sidebartype="full" data-sidebar-position="absolute"
 		data-header-position="absolute" data-boxed-layout="full">
 
-
-
 		<div class="page-wrapper">
 			<!-- ============================================================== -->
 			<!-- Bread crumb and right sidebar toggle -->
 			<!-- ============================================================== -->
 			<div class="page-breadcrumb bg-white">
-				<div class="row align-items-center">
-					<h2 class="form-title">
-						<%
-						utilisateur u = (utilisateur) session.getAttribute("userCourant");
-						%>
-
-						<p class="hello">
-							Bienvenu :
-							<%=u.getUsername()%></p>
-					</h2>
-
-				</div>
+		 
 				<!-- /.col-lg-12 -->
 			</div>
 			<!-- ============================================================== -->
@@ -83,100 +57,34 @@ td {
 			<!-- Container fluid  -->
 			<!-- ============================================================== -->
 			<div class="container-fluid">
-				<div class="row">
-					<div class="col">
-						<a type="button" href="<%=request.getContextPath()%>"
-							class="btn btn-primary">Utilisateurs</a>
-						<a  href="<%=request.getContextPath()%>/listingGroupe"  class="btn btn-primary">Groupes</a>
-						<a  href="<%=request.getContextPath()%>/listingMatiere"     class="btn btn-primary">Matiers</a>
-						<button type="button" class="btn btn-primary">Button 4</button>
-						<button type="button" class="btn btn-primary">Button 5</button>
-
-					</div>
-				</div>
 				<!-- ============================================================== -->
-				<!-- RECENT SALES -->
+				<!-- Start Page Content -->
 				<!-- ============================================================== -->
 				<div class="row">
-					<div class="col-md-12 col-lg-12 col-sm-12">
-						<div class="white-box">
-							<div class="d-md-flex mb-3">
-								<h3 class="box-title mb-0">liste des utilisateurs</h3>
-								<div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
-									<a href="<%=request.getContextPath()%>/new"
-										class="btn btn-primary">Ajouter un nouveau utilisateur</a>
-
-
-								</div>
-							</div>
-							<div class="table-responsive">
-								<table class="table no-wrap">
-									<thead>
-										<tr>
-
-											<th class="border-top-0">Pseudo</th>
-											<th class="border-top-0">Role</th>
-											<th class="border-top-0">Mot de passe</th>
-											<th class="border-top-0">Action</th>
-										</tr>
-									</thead>
-									<tbody>
-										<!-- Iterate over the list of users -->
-										<%
-										List<utilisateur> listUser = (List<utilisateur>) request.getAttribute("listUser");
-										if (listUser != null) {
-											for (utilisateur user : listUser) {
-										%>
-										<tr>
-											<td><%=user.getUsername()%></td>
-											<td>
-												<% 
-										    String role = user.getRole_id() ;
-										    if (role.equals("1")) {
-										        out.print("Admin");
-										    } else if (role.equals("2")) {
-										        out.print("Enseignant");
-										    } else if (role.equals("3")) {
-										        out.print("Agent");
-										    } else {
-										        out.print("Unknown");
-										    }
-										    %>
-				  						</td>
-											</td>
-											<td><%=user.getPassword()%></td>
-											<td>
-												<button type="button" class="btn btn-success">
-													<a
-														href="<%=request.getContextPath()%>/edit?id=<%=user.getId()%>"
-														class="text-white">Modifier</a>
-												</button>
-
-												<button type="button" class="btn btn-danger">
-													<a
-														href="<%=request.getContextPath()%>/delete?id=<%=user.getId()%>"
-														class="text-white">Supprimer</a>
-												</button>
-											</td>
-										</tr>
-										<%
-										}
-										}
-										%>
-									</tbody>
-								</table>
+					<div class="col-lg-12 col-xlg-12 col-md-12">
+						<div class="card">
+							<div class="card-body">
+								<form action="insertGroupe" method="post" class="form-horizontal form-material">
+									<div class="form-group mb-4">
+										<label class="col-md-12 p-0">Nom du groupe</label>
+										<div class="col-md-12 border-bottom p-0">
+											<input name="label" id="label" type="text" placeholder="Nom du groupe"
+												class="form-control p-0 border-0">
+										</div>
+									</div>
+									<div class="form-group mb-4">
+										<div class="col-sm-12">
+											<button type="submit" value="Envoyer" class="btn btn-success">Ajouter</button>
+										</div>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>
 				</div>
 				<!-- ============================================================== -->
-				<!-- Recent Comments -->
+				<!-- End PAge Content -->
 				<!-- ============================================================== -->
-				<div class="row">
-					<!-- .col -->
-
-					<!-- /.col -->
-				</div>
 			</div>
 			<!-- ============================================================== -->
 			<!-- End Container fluid  -->
@@ -185,8 +93,7 @@ td {
 			<!-- footer -->
 			<!-- ============================================================== -->
 			<footer class="footer text-center">
-				2021 Â© Ample Admin brought to you by <a
-					href="https://www.wrappixel.com/">wrappixel.com</a>
+				2021 © Ample Admin brought to you by <a href="https://www.wrappixel.com/">wrappixel.com</a>
 			</footer>
 			<!-- ============================================================== -->
 			<!-- End footer -->
@@ -202,7 +109,6 @@ td {
 	<!-- ============================================================== -->
 	<!-- All Jquery -->
 	<!-- ============================================================== -->
-
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
